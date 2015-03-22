@@ -1036,6 +1036,9 @@ function readDescriptorSuccess(obj)
   if (obj.status == "readDescriptor")
   {
     alert("Read Descriptor");
+    theTemp = bluetoothle.encodedStringToBytes(obj.value);
+    theTemp = bluetoothle.bytesToString(theTemp);
+    alert(theTemp);
   }
   else
   {
