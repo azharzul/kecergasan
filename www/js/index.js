@@ -363,17 +363,17 @@ function startScanSuccess(obj)
 
   if (obj.status == "scanResult")
   {
-    alert("Scan Result");
+    console.log("Scan Result");
 
     addDevice(obj.address, obj.name);
   }
   else if (obj.status == "scanStarted")
   {
-    alert("Scan Started");
+    console.log("Scan Started");
   }
   else
   {
-    alert("Unexpected Start Scan Status");
+    console.log("Unexpected Start Scan Status");
   }
 }
 
