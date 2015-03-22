@@ -910,8 +910,9 @@ function readSuccess(obj)
 
     alert("Read");
     theTemp = bluetoothle.encodedStringToBytes(obj.value);
+    theBytes = JSON.stringify(theTemp);
     theTemp = bluetoothle.bytesToString(theTemp);
-    alert(theTemp);
+    alert(theBytes+"\n"+theTemp);
   }
   else
   {
@@ -1037,8 +1038,9 @@ function readDescriptorSuccess(obj)
   {
     alert("Read Descriptor");
     theTemp = bluetoothle.encodedStringToBytes(obj.value);
+    theBytes = JSON.stringify(theTemp);
     theTemp = bluetoothle.bytesToString(theTemp);
-    alert(theTemp);
+    alert(theBytes+"\n"+theTemp);
   }
   else
   {
