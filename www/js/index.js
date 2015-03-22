@@ -359,7 +359,7 @@ function startScan()
 
 function startScanSuccess(obj)
 {
-  alert("Start Scan Success : " + JSON.stringify(obj));
+  console.log("Start Scan Success : " + JSON.stringify(obj));
 
   if (obj.status == "scanResult")
   {
