@@ -909,6 +909,7 @@ function readSuccess(obj)
     alert("Read : " + bytes[0]);*/
 
     alert("Read");
+    alert(bluetoothle.encodedStringToBytes(obj.value));
   }
   else
   {
