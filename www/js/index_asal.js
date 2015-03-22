@@ -262,7 +262,7 @@ function initialize()
 {
   var paramsObj = {request:true};
 
-  alert("Initialize : " + JSON.stringify(paramsObj));
+  console.log("Initialize : " + JSON.stringify(paramsObj));
 
   bluetoothle.initialize(initializeSuccess, initializeError, paramsObj);
 
@@ -271,26 +271,26 @@ function initialize()
 
 function initializeSuccess(obj)
 {
-  alert("Initialize Success : " + JSON.stringify(obj));
+  console.log("Initialize Success : " + JSON.stringify(obj));
 
   if (obj.status == "enabled")
   {
-    alert("Enabled");
+    console.log("Enabled");
   }
   else
   {
-    alert("Unexpected Initialize Status");
+    console.log("Unexpected Initialize Status");
   }
 }
 
 function initializeError(obj)
 {
-  alert("Initialize Error : " + JSON.stringify(obj));
+  console.log("Initialize Error : " + JSON.stringify(obj));
 }
 
 function enable()
 {
-  alert("Enable");
+  console.log("Enable");
 
   bluetoothle.enable(enableSuccess, enableError);
 
@@ -299,26 +299,26 @@ function enable()
 
 function enableSuccess(obj)
 {
-  alert("Enable Success : " + JSON.stringify(obj));
+  console.log("Enable Success : " + JSON.stringify(obj));
 
   if (obj.status == "enabled")
   {
-    alert("Enabled");
+    console.log("Enabled");
   }
   else
   {
-    alert("Unexpected Enable Status");
+    console.log("Unexpected Enable Status");
   }
 }
 
 function enableError(obj)
 {
-  alert("Enable Error : " + JSON.stringify(obj));
+  console.log("Enable Error : " + JSON.stringify(obj));
 }
 
 function disable()
 {
-  alert("Disable");
+  console.log("Disable");
 
   bluetoothle.disable(disableSuccess, disableError);
 
@@ -327,21 +327,21 @@ function disable()
 
 function disableSuccess(obj)
 {
-  alert("Disable Success : " + JSON.stringify(obj));
+  console.log("Disable Success : " + JSON.stringify(obj));
 
   if (obj.status == "disabled")
   {
-    alert("Disabled");
+    console.log("Disabled");
   }
   else
   {
-    alert("Unexpected Disable Status");
+    console.log("Unexpected Disable Status");
   }
 }
 
 function disableError(obj)
 {
-  alert("Disable Error : " + JSON.stringify(obj));
+  console.log("Disable Error : " + JSON.stringify(obj));
 }
 
 function startScan()
@@ -350,7 +350,7 @@ function startScan()
 
   var paramsObj = {serviceUuids:[]};
 
-  alert("Start Scan : " + JSON.stringify(paramsObj));
+  console.log("Start Scan : " + JSON.stringify(paramsObj));
 
   bluetoothle.startScan(startScanSuccess, startScanError, paramsObj);
 
@@ -359,32 +359,32 @@ function startScan()
 
 function startScanSuccess(obj)
 {
-  alert("Start Scan Success : " + JSON.stringify(obj));
+  console.log("Start Scan Success : " + JSON.stringify(obj));
 
   if (obj.status == "scanResult")
   {
-    alert("Scan Result");
+    console.log("Scan Result");
 
     addDevice(obj.address, obj.name);
   }
   else if (obj.status == "scanStarted")
   {
-    alert("Scan Started");
+    console.log("Scan Started");
   }
   else
   {
-    alert("Unexpected Start Scan Status");
+    console.log("Unexpected Start Scan Status");
   }
 }
 
 function startScanError(obj)
 {
-  alert("Start Scan Error : " + JSON.stringify(obj));
+  console.log("Start Scan Error : " + JSON.stringify(obj));
 }
 
 function stopScan()
 {
-  alert("Stop Scan");
+  console.log("Stop Scan");
 
   bluetoothle.stopScan(stopScanSuccess, stopScanError);
 
@@ -393,21 +393,21 @@ function stopScan()
 
 function stopScanSuccess(obj)
 {
-  alert("Stop Scan Success : " + JSON.stringify(obj));
+  console.log("Stop Scan Success : " + JSON.stringify(obj));
 
   if (obj.status == "scanStopped")
   {
-    alert("Scan Stopped");
+    console.log("Scan Stopped");
   }
   else
   {
-    alert("Unexpected Stop Scan Status");
+    console.log("Unexpected Stop Scan Status");
   }
 }
 
 function stopScanError(obj)
 {
-  alert("Stop Scan Error : " + JSON.stringify(obj));
+  console.log("Stop Scan Error : " + JSON.stringify(obj));
 }
 
 function retrieveConnected()
@@ -415,7 +415,7 @@ function retrieveConnected()
   //TODO Add to readme that at least one is required
   var paramsObj = {serviceUuids:["180D"]};
 
-  alert("Retrieve Connected : " + JSON.stringify(paramsObj));
+  console.log("Retrieve Connected : " + JSON.stringify(paramsObj));
 
   bluetoothle.retrieveConnected(retrieveConnectedSuccess, retrieveConnectedError, paramsObj);
 
@@ -424,7 +424,7 @@ function retrieveConnected()
 
 function retrieveConnectedSuccess(obj)
 {
-  alert("Retrieve Connected Success : " + JSON.stringify(obj));
+  console.log("Retrieve Connected Success : " + JSON.stringify(obj));
 
   for (var i = 0; i < obj.length; i++)
   {
@@ -434,12 +434,12 @@ function retrieveConnectedSuccess(obj)
 
 function retrieveConnectedError(obj)
 {
-  alert("Retrieve Connected Error : " + JSON.stringify(obj));
+  console.log("Retrieve Connected Error : " + JSON.stringify(obj));
 }
 
 function isInitialized()
 {
-  alert("Is Initialized");
+  console.log("Is Initialized");
 
   bluetoothle.isInitialized(isInitializedSuccess);
 
@@ -448,21 +448,21 @@ function isInitialized()
 
 function isInitializedSuccess(obj)
 {
-  alert("Is Initialized Success : " + JSON.stringify(obj));
+  console.log("Is Initialized Success : " + JSON.stringify(obj));
 
   if (obj.isInitialized)
   {
-    alert("Is Initialized : true");
+    console.log("Is Initialized : true");
   }
   else
   {
-    alert("Is Initialized : false");
+    console.log("Is Initialized : false");
   }
 }
 
 function isEnabled()
 {
-  alert("Is Enabled");
+  console.log("Is Enabled");
 
   bluetoothle.isEnabled(isEnabledSuccess);
 
@@ -471,21 +471,21 @@ function isEnabled()
 
 function isEnabledSuccess(obj)
 {
-  alert("Is Enabled Success : " + JSON.stringify(obj));
+  console.log("Is Enabled Success : " + JSON.stringify(obj));
 
   if (obj.isEnabled)
   {
-    alert("Is Enabled : true");
+    console.log("Is Enabled : true");
   }
   else
   {
-    alert("Is Enabled : false");
+    console.log("Is Enabled : false");
   }
 }
 
 function isScanning()
 {
-  alert("Is Scanning");
+  console.log("Is Scanning");
 
   bluetoothle.isScanning(isScanningSuccess);
 
@@ -494,15 +494,15 @@ function isScanning()
 
 function isScanningSuccess(obj)
 {
-  alert("Is Scanning Success : " + JSON.stringify(obj));
+  console.log("Is Scanning Success : " + JSON.stringify(obj));
 
   if (obj.isScanning)
   {
-    alert("Is Scanning : true");
+    console.log("Is Scanning : true");
   }
   else
   {
-    alert("Is Scanning : false");
+    console.log("Is Scanning : false");
   }
 }
 
@@ -510,7 +510,7 @@ function connect(address)
 {
   var paramsObj = {address:address};
 
-   alert("Connect : " + JSON.stringify(paramsObj));
+   console.log("Connect : " + JSON.stringify(paramsObj));
 
   bluetoothle.connect(connectSuccess, connectError, paramsObj);
 
@@ -519,32 +519,32 @@ function connect(address)
 
 function connectSuccess(obj)
 {
-  alert("Connect Success : " + JSON.stringify(obj));
+  console.log("Connect Success : " + JSON.stringify(obj));
 
   if (obj.status == "connected")
   {
-    alert("Connected");
+    console.log("Connected");
   }
   else if (obj.status == "connecting")
   {
-    alert("Connecting");
+    console.log("Connecting");
   }
   else
   {
-    alert("Unexpected Connect Status");
+    console.log("Unexpected Connect Status");
   }
 }
 
 function connectError(obj)
 {
-  alert("Connect Error : " + JSON.stringify(obj));
+  console.log("Connect Error : " + JSON.stringify(obj));
 }
 
 function reconnect(address)
 {
   var paramsObj = {address:address};
 
-  alert("Reconnect : " + JSON.stringify(paramsObj));
+  console.log("Reconnect : " + JSON.stringify(paramsObj));
 
   bluetoothle.reconnect(reconnectSuccess, reconnectError, paramsObj);
 
@@ -553,32 +553,32 @@ function reconnect(address)
 
 function reconnectSuccess(obj)
 {
-  alert("Reconnect Success : " + JSON.stringify(obj));
+  console.log("Reconnect Success : " + JSON.stringify(obj));
 
   if (obj.status == "connected")
   {
-    alert("Connected");
+    console.log("Connected");
   }
   else if (obj.status == "connecting")
   {
-    alert("Connecting");
+    console.log("Connecting");
   }
   else
   {
-    alert("Unexpected Reconnect Status");
+    console.log("Unexpected Reconnect Status");
   }
 }
 
 function reconnectError(obj)
 {
-  alert("Reconnect Error : " + JSON.stringify(obj));
+  console.log("Reconnect Error : " + JSON.stringify(obj));
 }
 
 function disconnect(address)
 {
   var paramsObj = {address:address};
 
-  alert("Disconnect : " + JSON.stringify(paramsObj));
+  console.log("Disconnect : " + JSON.stringify(paramsObj));
 
   bluetoothle.disconnect(disconnectSuccess, disconnectError, paramsObj);
 
@@ -587,32 +587,32 @@ function disconnect(address)
 
 function disconnectSuccess(obj)
 {
-  alert("Disconnect Success : " + JSON.stringify(obj));
+  console.log("Disconnect Success : " + JSON.stringify(obj));
 
   if (obj.status == "disconnected")
   {
-    alert("Disconnected");
+    console.log("Disconnected");
   }
   else if (obj.status == "disconnecting")
   {
-    alert("Disconnecting");
+    console.log("Disconnecting");
   }
   else
   {
-    alert("Unexpected Disconnect Status");
+    console.log("Unexpected Disconnect Status");
   }
 }
 
 function disconnectError(obj)
 {
-  alert("Disconnect Error : " + JSON.stringify(obj));
+  console.log("Disconnect Error : " + JSON.stringify(obj));
 }
 
 function close(address)
 {
   var paramsObj = {address:address};
 
-  alert("Close : " + JSON.stringify(paramsObj));
+  console.log("Close : " + JSON.stringify(paramsObj));
 
   bluetoothle.close(closeSuccess, closeError, paramsObj);
 
@@ -621,28 +621,28 @@ function close(address)
 
 function closeSuccess(obj)
 {
-  alert("Close Success : " + JSON.stringify(obj));
+  console.log("Close Success : " + JSON.stringify(obj));
 
   if (obj.status == "closed")
   {
-    alert("Closed");
+    console.log("Closed");
   }
   else
   {
-    alert("Unexpected Close Status");
+    console.log("Unexpected Close Status");
   }
 }
 
 function closeError(obj)
 {
-  alert("Close Error : " + JSON.stringify(obj));
+  console.log("Close Error : " + JSON.stringify(obj));
 }
 
 function discover(address)
 {
   var paramsObj = {address:address};
 
-  alert("Discover : " + JSON.stringify(paramsObj));
+  console.log("Discover : " + JSON.stringify(paramsObj));
 
   bluetoothle.discover(discoverSuccess, discoverError, paramsObj);
 
@@ -651,11 +651,11 @@ function discover(address)
 
 function discoverSuccess(obj)
 {
-  alert("Discover Success : " + JSON.stringify(obj));
+  console.log("Discover Success : " + JSON.stringify(obj));
 
   if (obj.status == "discovered")
   {
-    alert("Discovered");
+    console.log("Discovered");
 
     var address = obj.address;
 
@@ -688,20 +688,20 @@ function discoverSuccess(obj)
   }
   else
   {
-    alert("Unexpected Discover Status");
+    console.log("Unexpected Discover Status");
   }
 }
 
 function discoverError(obj)
 {
-  alert("Discover Error : " + JSON.stringify(obj));
+  console.log("Discover Error : " + JSON.stringify(obj));
 }
 
 function services(address)
 {
   var paramsObj = {address:address, serviceUuids:[]};
 
-  alert("Services : " + JSON.stringify(paramsObj));
+  console.log("Services : " + JSON.stringify(paramsObj));
 
   bluetoothle.services(servicesSuccess, servicesError, paramsObj);
 
@@ -710,11 +710,11 @@ function services(address)
 
 function servicesSuccess(obj)
 {
-  alert("Services Success : " + JSON.stringify(obj));
+  console.log("Services Success : " + JSON.stringify(obj));
 
   if (obj.status == "services")
   {
-    alert("Services");
+    console.log("Services");
 
     var serviceUuids = obj.serviceUuids;
 
@@ -725,20 +725,20 @@ function servicesSuccess(obj)
   }
   else
   {
-    alert("Unexpected Services Status");
+    console.log("Unexpected Services Status");
   }
 }
 
 function servicesError(obj)
 {
-  alert("Services Error : " + JSON.stringify(obj));
+  console.log("Services Error : " + JSON.stringify(obj));
 }
 
 function rssi(address)
 {
   var paramsObj = {address:address};
 
-  alert("RSSI : " + JSON.stringify(paramsObj));
+  console.log("RSSI : " + JSON.stringify(paramsObj));
 
   bluetoothle.rssi(rssiSuccess, rssiError, paramsObj);
 
@@ -747,28 +747,28 @@ function rssi(address)
 
 function rssiSuccess(obj)
 {
-  alert("RSSI Success : " + JSON.stringify(obj));
+  console.log("RSSI Success : " + JSON.stringify(obj));
 
   if (obj.status == "rssi")
   {
-    alert("RSSI");
+    console.log("RSSI");
   }
   else
   {
-    alert("Unexpected RSSI Status");
+    console.log("Unexpected RSSI Status");
   }
 }
 
 function rssiError(obj)
 {
-  alert("RSSI Error : " + JSON.stringify(obj));
+  console.log("RSSI Error : " + JSON.stringify(obj));
 }
 
 function isConnected(address)
 {
   var paramsObj = {address:address};
 
-  alert("Is Connected : " + JSON.stringify(paramsObj));
+  console.log("Is Connected : " + JSON.stringify(paramsObj));
 
   bluetoothle.isConnected(isConnectedSuccess, paramsObj);
 
@@ -777,15 +777,15 @@ function isConnected(address)
 
 function isConnectedSuccess(obj)
 {
-  alert("Is Connected Success : " + JSON.stringify(obj));
+  console.log("Is Connected Success : " + JSON.stringify(obj));
 
   if (obj.isConnected)
   {
-    alert("Is Connected : true");
+    console.log("Is Connected : true");
   }
   else
   {
-    alert("Is Connected : false");
+    console.log("Is Connected : false");
   }
 }
 
@@ -793,7 +793,7 @@ function isDiscovered(address)
 {
   var paramsObj = {address:address};
 
-  alert("Is Discovered : " + JSON.stringify(paramsObj));
+  console.log("Is Discovered : " + JSON.stringify(paramsObj));
 
   bluetoothle.isDiscovered(isDiscoveredSuccess, paramsObj);
 
@@ -802,15 +802,15 @@ function isDiscovered(address)
 
 function isDiscoveredSuccess(obj)
 {
-  alert("Is Discovered Success : " + JSON.stringify(obj));
+  console.log("Is Discovered Success : " + JSON.stringify(obj));
 
   if (obj.isDiscovered)
   {
-    alert("Is Discovered : true");
+    console.log("Is Discovered : true");
   }
   else
   {
-    alert("Is Discovered : false");
+    console.log("Is Discovered : false");
   }
 }
 
@@ -818,7 +818,7 @@ function characteristics(address, serviceUuid)
 {
   var paramsObj = {address:address, serviceUuid:serviceUuid, characteristicUuids:[]};
 
-  alert("Characteristics : " + JSON.stringify(paramsObj));
+  console.log("Characteristics : " + JSON.stringify(paramsObj));
 
   bluetoothle.characteristics(characteristicsSuccess, characteristicsError, paramsObj);
 
@@ -827,11 +827,11 @@ function characteristics(address, serviceUuid)
 
 function characteristicsSuccess(obj)
 {
-  alert("Characteristics Success : " + JSON.stringify(obj));
+  console.log("Characteristics Success : " + JSON.stringify(obj));
 
   if (obj.status == "characteristics")
   {
-    alert("Characteristics");
+    console.log("Characteristics");
 
     var characteristics = obj.characteristics;
 
@@ -842,20 +842,20 @@ function characteristicsSuccess(obj)
   }
   else
   {
-    alert("Unexpected Characteristics Status");
+    console.log("Unexpected Characteristics Status");
   }
 }
 
 function characteristicsError(obj)
 {
-  alert("Characteristics Error : " + JSON.stringify(obj));
+  console.log("Characteristics Error : " + JSON.stringify(obj));
 }
 
 function descriptors(address, serviceUuid, characteristicUuid)
 {
   var paramsObj = {address:address, serviceUuid:serviceUuid, characteristicUuid:characteristicUuid};
 
-  alert("Descriptors : " + JSON.stringify(paramsObj));
+  console.log("Descriptors : " + JSON.stringify(paramsObj));
 
   bluetoothle.descriptors(descriptorsSuccess, descriptorsError, paramsObj);
 
@@ -864,11 +864,11 @@ function descriptors(address, serviceUuid, characteristicUuid)
 
 function descriptorsSuccess(obj)
 {
-  alert("Descriptors Success : " + JSON.stringify(obj));
+  console.log("Descriptors Success : " + JSON.stringify(obj));
 
   if (obj.status == "descriptors")
   {
-    alert("Descriptors");
+    console.log("Descriptors");
 
     var descriptorUuids = obj.descriptorUuids;
 
@@ -879,20 +879,20 @@ function descriptorsSuccess(obj)
   }
   else
   {
-    alert("Unexpected Descriptors Status");
+    console.log("Unexpected Descriptors Status");
   }
 }
 
 function descriptorsError(obj)
 {
-  alert("Descriptors Error : " + JSON.stringify(obj));
+  console.log("Descriptors Error : " + JSON.stringify(obj));
 }
 
 function read(address, serviceUuid, characteristicUuid)
 {
   var paramsObj = {address:address, serviceUuid:serviceUuid, characteristicUuid:characteristicUuid};
 
-  alert("Read : " + JSON.stringify(paramsObj));
+  console.log("Read : " + JSON.stringify(paramsObj));
 
   bluetoothle.read(readSuccess, readError, paramsObj);
 
@@ -901,31 +901,31 @@ function read(address, serviceUuid, characteristicUuid)
 
 function readSuccess(obj)
 {
-  alert("Read Success : " + JSON.stringify(obj));
+  console.log("Read Success : " + JSON.stringify(obj));
 
   if (obj.status == "read")
   {
     /*var bytes = bluetoothle.encodedStringToBytes(obj.value);
-    alert("Read : " + bytes[0]);*/
+    console.log("Read : " + bytes[0]);*/
 
-    alert("Read");
+    console.log("Read");
   }
   else
   {
-    alert("Unexpected Read Status");
+    console.log("Unexpected Read Status");
   }
 }
 
 function readError(obj)
 {
-  alert("Read Error : " + JSON.stringify(obj));
+  console.log("Read Error : " + JSON.stringify(obj));
 }
 
 function subscribe(address, serviceUuid, characteristicUuid)
 {
   var paramsObj = {address:address, serviceUuid:serviceUuid, characteristicUuid:characteristicUuid};
 
-  alert("Subscribe : " + JSON.stringify(paramsObj));
+  console.log("Subscribe : " + JSON.stringify(paramsObj));
 
   bluetoothle.subscribe(subscribeSuccess, subscribeError, paramsObj);
 
@@ -934,32 +934,32 @@ function subscribe(address, serviceUuid, characteristicUuid)
 
 function subscribeSuccess(obj)
 {
-  alert("Subscribe Success : " + JSON.stringify(obj));
+  console.log("Subscribe Success : " + JSON.stringify(obj));
 
   if (obj.status == "subscribedResult")
   {
-    alert("Subscribed Result");
+    console.log("Subscribed Result");
   }
   else if (obj.status == "subscribed")
   {
-    alert("Subscribed");
+    console.log("Subscribed");
   }
   else
   {
-    alert("Unexpected Subscribe Status");
+    console.log("Unexpected Subscribe Status");
   }
 }
 
 function subscribeError(obj)
 {
-  alert("Subscribe Error : " + JSON.stringify(obj));
+  console.log("Subscribe Error : " + JSON.stringify(obj));
 }
 
 function unsubscribe(address, serviceUuid, characteristicUuid)
 {
   var paramsObj = {address:address, serviceUuid:serviceUuid, characteristicUuid:characteristicUuid};
 
-  alert("Unsubscribe : " + JSON.stringify(paramsObj));
+  console.log("Unsubscribe : " + JSON.stringify(paramsObj));
 
   bluetoothle.unsubscribe(unsubscribeSuccess, unsubscribeError, paramsObj);
 
@@ -968,28 +968,28 @@ function unsubscribe(address, serviceUuid, characteristicUuid)
 
 function unsubscribeSuccess(obj)
 {
-  alert("Unsubscribe Success : " + JSON.stringify(obj));
+  console.log("Unsubscribe Success : " + JSON.stringify(obj));
 
   if (obj.status == "unsubscribed")
   {
-    alert("Unsubscribed");
+    console.log("Unsubscribed");
   }
   else
   {
-    alert("Unexpected Unsubscribe Status");
+    console.log("Unexpected Unsubscribe Status");
   }
 }
 
 function unsubscribeError(obj)
 {
-  alert("Unsubscribe Error : " + JSON.stringify(obj));
+  console.log("Unsubscribe Error : " + JSON.stringify(obj));
 }
 
 function write(address, serviceUuid, characteristicUuid, value)
 {
   var paramsObj = {address:address, serviceUuid:serviceUuid, characteristicUuid:characteristicUuid, value:value};
 
-  alert("Write : " + JSON.stringify(paramsObj));
+  console.log("Write : " + JSON.stringify(paramsObj));
 
   bluetoothle.write(writeSuccess, writeError, paramsObj);
 
@@ -998,28 +998,28 @@ function write(address, serviceUuid, characteristicUuid, value)
 
 function writeSuccess(obj)
 {
-  alert("Write Success : " + JSON.stringify(obj));
+  console.log("Write Success : " + JSON.stringify(obj));
 
   if (obj.status == "written")
   {
-    alert("Written");
+    console.log("Written");
   }
   else
   {
-    alert("Unexpected Write Status");
+    console.log("Unexpected Write Status");
   }
 }
 
 function writeError(obj)
 {
-  alert("Write Error : " + JSON.stringify(obj));
+  console.log("Write Error : " + JSON.stringify(obj));
 }
 
 function readDescriptor(address, serviceUuid, characteristicUuid, descriptorUuid)
 {
   var paramsObj = {address:address, serviceUuid:serviceUuid, characteristicUuid:characteristicUuid, descriptorUuid:descriptorUuid};
 
-  alert("Read Descriptor : " + JSON.stringify(paramsObj));
+  console.log("Read Descriptor : " + JSON.stringify(paramsObj));
 
   bluetoothle.readDescriptor(readDescriptorSuccess, readDescriptorError, paramsObj);
 
@@ -1028,28 +1028,28 @@ function readDescriptor(address, serviceUuid, characteristicUuid, descriptorUuid
 
 function readDescriptorSuccess(obj)
 {
-  alert("Read Descriptor Success : " + JSON.stringify(obj));
+  console.log("Read Descriptor Success : " + JSON.stringify(obj));
 
   if (obj.status == "readDescriptor")
   {
-    alert("Read Descriptor");
+    console.log("Read Descriptor");
   }
   else
   {
-    alert("Unexpected Read Descriptor Status");
+    console.log("Unexpected Read Descriptor Status");
   }
 }
 
 function readDescriptorError(obj)
 {
-  alert("Read Descriptor Error : " + JSON.stringify(obj));
+  console.log("Read Descriptor Error : " + JSON.stringify(obj));
 }
 
 function writeDescriptor(address, serviceUuid, characteristicUuid, descriptorUuid, value)
 {
   var paramsObj = {address:address, serviceUuid:serviceUuid, characteristicUuid:characteristicUuid, descriptorUuid:descriptorUuid, value:value};
 
-  alert("Write Descriptor : " + JSON.stringify(paramsObj));
+  console.log("Write Descriptor : " + JSON.stringify(paramsObj));
 
   bluetoothle.writeDescriptor(writeDescriptorSuccess, writeDescriptorError, paramsObj);
 
@@ -1058,21 +1058,21 @@ function writeDescriptor(address, serviceUuid, characteristicUuid, descriptorUui
 
 function writeDescriptorSuccess(obj)
 {
-  alert("Write Descriptor Success : " + JSON.stringify(obj));
+  console.log("Write Descriptor Success : " + JSON.stringify(obj));
 
   if (obj.status == "writeDescriptor")
   {
-    alert("Write Descriptor");
+    console.log("Write Descriptor");
   }
   else
   {
-    alert("Unexpected Write Descriptor Status");
+    console.log("Unexpected Write Descriptor Status");
   }
 }
 
 function writeDescriptorError(obj)
 {
-  alert("Write Descriptor Error : " + JSON.stringify(obj));
+  console.log("Write Descriptor Error : " + JSON.stringify(obj));
 }
 
 function addDevice(address, name)
