@@ -47,6 +47,8 @@ function onDeviceReady()
 
 app.initialize(function()
 {
+  $("a.gegar").on("vclick", gegar);
+
   $("a.initialize").on("vclick", initialize);
 
   $("a.enable").on("vclick", enable);
@@ -257,6 +259,13 @@ app.initialize(function()
     }
   });
 });
+
+function gegar()
+{
+  initialize();
+  connect('88:0F:10:1D:23:58');
+  discover('88:0F:10:1D:23:58');
+}
 
 function initialize()
 {
