@@ -263,14 +263,151 @@ app.initialize(function()
 function writeLogBox(msg)
 {
   $(".logBox").append(msg);
+  var textarea = document.getElementById('logBox');
+  textarea.scrollTop = textarea.scrollHeight;
 }
 
 function gegar()
 {
-  initialize();
-  connect('88:0F:10:1D:23:58');
-  discover('88:0F:10:1D:23:58');
+  aXinitialize();
+  //connect('88:0F:10:1D:23:58');
+  //discover('88:0F:10:1D:23:58');
 }
+
+
+function aXinitialize()
+{
+  var paramsObj = {request:true};
+
+  writeLogBox("\n" + "Initialize : " + JSON.stringify(paramsObj));
+
+  bluetoothle.initialize(aXinitializeSuccess, aXinitializeError, paramsObj);
+
+  return false;
+}
+
+function aXinitializeSuccess(obj)
+{
+  writeLogBox("\n" + "Initialize Success : " + JSON.stringify(obj));
+
+  if (obj.status == "enabled")
+  {
+    writeLogBox("\n" + "Enabled");
+    aXconnect('88:0F:10:1D:23:58');
+  }
+  else
+  {
+    writeLogBox("\n" + "Unexpected Initialize Status");
+  }
+}
+
+function aXinitializeError(obj)
+{
+  writeLogBox("\n" + "Initialize Error : " + JSON.stringify(obj));
+}
+
+function aXconnect(address)
+{
+  var paramsObj = {address:address};
+
+   writeLogBox("\n" + "Connect : " + JSON.stringify(paramsObj));
+
+  bluetoothle.connect(aXconnectSuccess, aXconnectError, paramsObj);
+
+  return false;
+}
+
+function aXconnectSuccess(obj)
+{
+  writeLogBox("\n" + "Connect Success : " + JSON.stringify(obj));
+
+  if (obj.status == "connected")
+  {
+    writeLogBox("\n" + "Connected");
+    aXdiscover('88:0F:10:1D:23:58');
+  }
+  else if (obj.status == "connecting")
+  {
+    writeLogBox("\n" + "Connecting");
+  }
+  else
+  {
+    writeLogBox("\n" + "Unexpected Connect Status");
+  }
+}
+
+function aXconnectError(obj)
+{
+  writeLogBox("\n" + "Connect Error : " + JSON.stringify(obj));
+}
+
+function aXdiscover(address)
+{
+  var paramsObj = {address:address};
+
+  writeLogBox("\n" + "Discover : " + JSON.stringify(paramsObj));
+
+  bluetoothle.discover(discoverSuccess, discoverError, paramsObj);
+
+  return false;
+}
+
+function aXdiscoverSuccess(obj)
+{
+  writeLogBox("\n" + "Discover Success : " + JSON.stringify(obj));
+
+  if (obj.status == "discovered")
+  {
+    writeLogBox("\n" + "Discovered");
+
+    var address = obj.address;
+
+    var services = obj.services;
+
+    for (var i = 0; i < services.length; i++)
+    {
+      var service = services[i];
+
+      addService(address, service.serviceUuid);
+
+      var characteristics = service.characteristics;
+
+      for (var j = 0; j < characteristics.length; j++)
+      {
+        var characteristic = characteristics[j];
+
+        addCharacteristic(address, service.serviceUuid, characteristic.characteristicUuid);
+
+        var descriptors = characteristic.descriptors;
+
+        for (var k = 0; k < descriptors.length; k++)
+        {
+          var descriptor = descriptors[k];
+
+          addDescriptor(address, service.serviceUuid, characteristic.characteristicUuid, descriptor.descriptorUuid);
+        }
+      }
+    }
+  }
+  else
+  {
+    writeLogBox("\n" + "Unexpected Discover Status");
+  }
+}
+
+function aXdiscoverError(obj)
+{
+  writeLogBox("\n" + "Discover Error : " + JSON.stringify(obj));
+}
+
+
+
+
+
+
+
+
+
 
 function initialize()
 {
