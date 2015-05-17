@@ -440,6 +440,43 @@ function aXwriteError(obj)
   writeLogBox("\n" + "Write Error : " + JSON.stringify(obj));
 }
 
+function aXread(address, serviceUuid, characteristicUuid)
+{
+  var paramsObj = {address:address, serviceUuid:serviceUuid, characteristicUuid:characteristicUuid};
+
+  writeLogBox("\n" + "Read : " + JSON.stringify(paramsObj));
+
+  bluetoothle.read(readSuccess, readError, paramsObj);
+
+  return false;
+}
+
+function aXreadSuccess(obj)
+{
+  writeLogBox("\n" + "Read Success : " + JSON.stringify(obj));
+
+  if (obj.status == "read")
+  {
+    /*var bytes = bluetoothle.encodedStringToBytes(obj.value);
+    writeLogBox("\n" + "Read : " + bytes[0]);*/
+
+    writeLogBox("\n" + "Read");
+    theTemp = bluetoothle.encodedStringToBytes(obj.value);
+    theBytes = JSON.stringify(theTemp);
+    theTemp = bluetoothle.bytesToString(theTemp);
+    writeLogBox("\n" + theBytes+"\n"+theTemp);
+  }
+  else
+  {
+    writeLogBox("\n" + "Unexpected Read Status");
+  }
+}
+
+function aXreadError(obj)
+{
+  writeLogBox("\n" + "Read Error : " + JSON.stringify(obj));
+}
+
 
 
 
