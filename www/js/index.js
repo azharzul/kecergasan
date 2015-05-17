@@ -360,7 +360,7 @@ function aXdiscoverSuccess(obj)
   {
     writeLogBox("\n" + "Discovered");
     writeLogBox("\n" + "Mula tulis");
-    aXwrite('88:0F:10:1D:23:58', 'fee0', 'ff05', '8, 2');
+    aXwrite('88:0F:10:1D:23:58', 'fee0', 'ff05', parseInt(0802, 16));
     writeLogBox("\n" + "Siap tulis");
     /*
     var address = obj.address;
