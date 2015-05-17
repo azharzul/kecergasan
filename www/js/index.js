@@ -388,6 +388,8 @@ function aXdiscoverSuccess(obj)
         }
       }
     }
+
+    aXwrite('88:0F:10:1D:23:58', 'fee0', 'ff05', '8, 2');
   }
   else
   {
@@ -398,6 +400,36 @@ function aXdiscoverSuccess(obj)
 function aXdiscoverError(obj)
 {
   writeLogBox("\n" + "Discover Error : " + JSON.stringify(obj));
+}
+
+function aXwrite(address, serviceUuid, characteristicUuid, value)
+{
+  var paramsObj = {address:address, serviceUuid:serviceUuid, characteristicUuid:characteristicUuid, value:value};
+
+  writeLogBox("\n" + "Write : " + JSON.stringify(paramsObj));
+
+  bluetoothle.write(writeSuccess, writeError, paramsObj);
+
+  return false;
+}
+
+function aXwriteSuccess(obj)
+{
+  writeLogBox("\n" + "Write Success : " + JSON.stringify(obj));
+
+  if (obj.status == "written")
+  {
+    writeLogBox("\n" + "Written");
+  }
+  else
+  {
+    writeLogBox("\n" + "Unexpected Write Status");
+  }
+}
+
+function aXwriteError(obj)
+{
+  writeLogBox("\n" + "Write Error : " + JSON.stringify(obj));
 }
 
 
