@@ -347,7 +347,7 @@ function aXdiscover(address)
 
   writeLogBox("\n" + "Discover : " + JSON.stringify(paramsObj));
 
-  bluetoothle.discover(discoverSuccess, discoverError, paramsObj);
+  bluetoothle.discover(aXdiscoverSuccess, aXdiscoverError, paramsObj);
 
   return false;
 }
