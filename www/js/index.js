@@ -359,6 +359,9 @@ function aXdiscoverSuccess(obj)
   if (obj.status == "discovered")
   {
     writeLogBox("\n" + "Discovered");
+    writeLogBox("\n" + "Mula tulis");
+    aXwrite('88:0F:10:1D:23:58', 'fee0', 'ff05', '8, 2');
+    writeLogBox("\n" + "Siap tulis");
     /*
     var address = obj.address;
 
@@ -390,9 +393,7 @@ function aXdiscoverSuccess(obj)
     }
     */
 
-    writeLogBox("\n" + "Mula tulis");
-    aXwrite('88:0F:10:1D:23:58', 'fee0', 'ff05', '8, 2');
-    writeLogBox("\n" + "Siap tulis");
+    
   }
   else
   {
