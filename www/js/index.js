@@ -359,7 +359,7 @@ function aXdiscoverSuccess(obj)
   if (obj.status == "discovered")
   {
     writeLogBox("\n" + "Discovered");
-
+    /*
     var address = obj.address;
 
     var services = obj.services;
@@ -388,6 +388,7 @@ function aXdiscoverSuccess(obj)
         }
       }
     }
+    */
 
     aXwrite('88:0F:10:1D:23:58', 'fee0', 'ff05', '8, 2');
   }
