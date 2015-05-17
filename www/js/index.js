@@ -360,10 +360,11 @@ function aXdiscoverSuccess(obj)
   {
     writeLogBox("\n" + "Discovered");
     writeLogBox("\n" + "Mula tulis");
+    bytes = new Uint8Array(2);
     bytes[0] = 8;
-    bytes[0] = 2;
-    value = bluetoothle.bytesToEncodedString(bytes);
-    aXwrite('88:0F:10:1D:23:58', 'fee0', 'ff05', value);
+    bytes[1] = 2;
+    hasil = bluetoothle.bytesToEncodedString(bytes);
+    aXwrite('88:0F:10:1D:23:58', 'fee0', 'ff05', hasil);
     writeLogBox("\n" + "Siap tulis");
     /*
     var address = obj.address;
