@@ -270,8 +270,8 @@ function writeLogBox(msg)
 function gegar()
 {
   aXinitialize();
-  //connect('88:0F:10:1D:23:58');
-  //discover('88:0F:10:1D:23:58');
+  //connect('88:0F:10:1D:0E:57');
+  //discover('88:0F:10:1D:0E:57');
 }
 
 
@@ -293,7 +293,7 @@ function aXinitializeSuccess(obj)
   if (obj.status == "enabled")
   {
     writeLogBox("\n" + "Enabled");
-    aXconnect('88:0F:10:1D:23:58');
+    aXconnect('88:0F:10:1D:0E:57');
   }
   else
   {
@@ -324,7 +324,7 @@ function aXconnectSuccess(obj)
   if (obj.status == "connected")
   {
     writeLogBox("\n" + "Connected");
-    aXdiscover('88:0F:10:1D:23:58');
+    aXdiscover('88:0F:10:1D:0E:57');
   }
   else if (obj.status == "connecting")
   {
@@ -364,7 +364,7 @@ function aXdiscoverSuccess(obj)
     bytes[0] = 8;
     bytes[1] = 2;
     hasil = bluetoothle.bytesToEncodedString(bytes);
-    aXwrite('88:0F:10:1D:23:58', 'fee0', 'ff05', hasil);
+    aXwrite('88:0F:10:1D:0E:57', 'fee0', 'ff05', hasil);
     writeLogBox("\n" + "Siap tulis");
     /*
     var address = obj.address;
