@@ -32,6 +32,12 @@
  * ========================================================================
  */
 /* line 22, ../../sass/vendors/_bootstrap-switch.scss */
+
+body { 
+  padding-top: 50px;
+  padding-bottom: 70px; 
+}
+
 .has-switch {
   display: inline-block;
   cursor: pointer;
