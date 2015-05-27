@@ -8,23 +8,23 @@
 
 <div class="main-content">
 	<div class="row">
-		<div class="chart col-xs-6 text-center" data-percent="73" ng-click="openModal('acceleration')">
+		<div class="chart col-xs-6 text-center" id="acceleration" data-percent="{{thisPlayer['acceleration']}}" ng-click="openModal('acceleration')">
 			<div>Acceleration</div>
-			<div>73%</div>
+			<div>{{thisPlayer['acceleration']}}%</div>
 		</div>
-		<div class="chart col-xs-6 text-center" data-percent="50" ng-click="openModal('Agility')">
+		<div class="chart col-xs-6 text-center" id="agility" data-percent="{{thisPlayer['agility']}}" ng-click="openModal('Agility')">
 			<div>Agility</div>
-			<div>50%</div>
+			<div>{{thisPlayer['agility']}}%</div>
 		</div>
-		<div class="chart col-xs-6 text-center" data-percent="80" ng-click="openModal('Pace')">
+		<div class="chart col-xs-6 text-center" id="pace" data-percent="{{thisPlayer['pace']}}" ng-click="openModal('Pace')">
 			<div>&nbsp;</div>
 			<div>Pace</div>
-			<div>80%</div>
+			<div>{{thisPlayer['pace']}}%</div>
 		</div>
-		<div class="chart col-xs-6 text-center" data-percent="70" ng-click="openModal('Stamina')">
+		<div class="chart col-xs-6 text-center" id="stamina" data-percent="{{thisPlayer['stamina']}}" ng-click="openModal('Stamina')">
 			<div>&nbsp;</div>
 			<div>Stamina</div>
-			<div>70%</div>
+			<div>{{thisPlayer['stamina']}}%</div>
 		</div>
 		<div class="col-xs-12" style="height:60px;"></div>
 		<div class="col-xs-12">
@@ -58,6 +58,10 @@
 				Step 2.
 				<div class-"form-control">
 					<button class="btn btn-primary btn-block" id="startSession">Session Start</button>
+				</div>
+				Step 3.
+				<div class-"form-control">
+					<button class="btn btn-primary btn-block" id="stopSession">Session Stop</button>
 				</div>
 			</div>
 		</div>

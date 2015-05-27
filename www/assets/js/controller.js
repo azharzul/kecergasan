@@ -51,6 +51,10 @@ genericSTS.controller('PlayerListCtrl', ['$scope', '$http','filterFilter', funct
 		$scope.players[key]['age'] = $scope.newPlayerAge.toUpperCase();
 		$scope.players[key]['height'] = $scope.newPlayerHeight.toUpperCase();
 		$scope.players[key]['weight'] = $scope.newPlayerWeight.toUpperCase();
+		$scope.players[key]['acceleration'] = 0;
+		$scope.players[key]['agility'] = 0;
+		$scope.players[key]['pace'] = 0;
+		$scope.players[key]['stamina'] = 0;
 		//console.log($scope.players);
 
 		localStorage.players = JSON.stringify($scope.players);
@@ -80,9 +84,12 @@ genericSTS.controller('AttributePageCtrl', ['$scope', '$http','filterFilter', fu
   $scope.attributeName = '';
   $scope.statusType = 'fa-question-circle';
   $scope.statusMsg = 'Waiting Command';
+  $scope.attribute = '';
+
 
   $scope.openModal = function(attribute)
   {
+  	$scope.attribute = attribute.toLowerCase();
   	$scope.attributeName = attribute.toUpperCase();
   	$('#myModal').modal('toggle');
   }
@@ -97,17 +104,35 @@ genericSTS.controller('AttributePageCtrl', ['$scope', '$http','filterFilter', fu
   		$scope.statusType = 'fa-question-circle';
 
   	$scope.statusMsg = msg;
+  	$scope.$apply();
   }
 
   $("#linkBracelet").click(function(){
   	setTimeout(function(){ $scope.updateStatus('',"Initializing"); }, 500);
-  	setTimeout(function(){ $scope.updateStatus('ok',"Initialized"); }, 1000);
-  	setTimeout(function(){ $scope.updateStatus('',"Connecting"); }, 1500);
-  	setTimeout(function(){ $scope.updateStatus('ok',"Connected"); }, 3000);
+  	setTimeout(function(){ $scope.updateStatus('ok',"Initialized"); }, 1500);
+  	setTimeout(function(){ $scope.updateStatus('',"Connecting"); }, 2500);
+  	setTimeout(function(){ $scope.updateStatus('ok',"Connected"); }, 5000);
   });
 
-  $('.chart').easyPieChart({
-  	animate: 2000
+  $("#startSession").click(function(){
+  	setTimeout(function(){ $scope.updateStatus('ok',"Session Started"); }, 500);
   });
+
+  $("#stopSession").click(function(){
+  	setTimeout(function(){ $scope.updateStatus('',"Session Stoped"); }, 500);
+  	setTimeout(function(){ $scope.updateStatus('ok',"Initialized"); }, 1500);
+  	setTimeout(function(){ $scope.updateStatus('',"Connecting"); }, 2500);
+  	setTimeout(function(){ $scope.updateStatus('ok',"Connected"); }, 5000);
+  	setTimeout(function(){ $scope.updateStatus('',"Reading data"); }, 6000);
+  	setTimeout(function(){ $scope.updateStatus('ok',"Data Syncronized"); }, 8000);
+  	$scope.thisPlayer[$scope.attribute] = Math.round(Math.random() * 10)*100/10;
+  	players[localStorage.currentUser] = $scope.thisPlayer;
+  	localStorage.players = JSON.stringify(players);
+  	$('#myModal').modal('toggle');
+  	$('#'+$scope.attribute).data('easyPieChart').update($scope.thisPlayer[$scope.attribute]);
+  });
+  setTimeout(function(){
+  	$('.chart').easyPieChart({ animate: 1000 });
+  }, 500);
 }]);
 
