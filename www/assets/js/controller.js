@@ -85,12 +85,20 @@ genericSTS.controller('AttributePageCtrl', ['$scope', '$http','filterFilter', fu
   $scope.statusType = 'fa-question-circle';
   $scope.statusMsg = 'Waiting Command';
   $scope.attribute = '';
+  $scope.step1 = false;
+  $scope.step2 = true;
+  $scope.step3 = true;
 
 
   $scope.openModal = function(attribute)
   {
   	$scope.attribute = attribute.toLowerCase();
   	$scope.attributeName = attribute.toUpperCase();
+  	$scope.statusType = 'fa-question-circle';
+  	$scope.statusMsg = 'Waiting Command';
+  	$scope.step1 = false;
+  	$scope.step2 = true;
+  	$scope.step3 = true;
   	$('#myModal').modal('toggle');
   }
 
@@ -112,10 +120,13 @@ genericSTS.controller('AttributePageCtrl', ['$scope', '$http','filterFilter', fu
   	setTimeout(function(){ $scope.updateStatus('ok',"Initialized"); }, 1500);
   	setTimeout(function(){ $scope.updateStatus('',"Connecting"); }, 2500);
   	setTimeout(function(){ $scope.updateStatus('ok',"Connected"); }, 5000);
+  	setTimeout(function(){ $scope.step1 = true;$scope.step2 = false;$scope.$apply(); }, 5000);
+
   });
 
   $("#startSession").click(function(){
   	setTimeout(function(){ $scope.updateStatus('ok',"Session Started"); }, 500);
+  	setTimeout(function(){ $scope.step2 = true;$scope.step3 = false;$scope.$apply(); }, 500);
   });
 
   $("#stopSession").click(function(){
@@ -125,11 +136,14 @@ genericSTS.controller('AttributePageCtrl', ['$scope', '$http','filterFilter', fu
   	setTimeout(function(){ $scope.updateStatus('ok',"Connected"); }, 5000);
   	setTimeout(function(){ $scope.updateStatus('',"Reading data"); }, 6000);
   	setTimeout(function(){ $scope.updateStatus('ok',"Data Syncronized"); }, 8000);
-  	$scope.thisPlayer[$scope.attribute] = Math.round(Math.random() * 10)*100/10;
-  	players[localStorage.currentUser] = $scope.thisPlayer;
-  	localStorage.players = JSON.stringify(players);
-  	$('#myModal').modal('toggle');
-  	$('#'+$scope.attribute).data('easyPieChart').update($scope.thisPlayer[$scope.attribute]);
+  	setTimeout(function(){  
+	  	$('#myModal').modal('toggle');
+	  	$scope.thisPlayer[$scope.attribute] = Math.round(Math.random() * 10)*100/10;
+	  	$scope.$apply();
+	  	players[localStorage.currentUser] = $scope.thisPlayer;
+	  	localStorage.players = JSON.stringify(players);
+	  	$('#'+$scope.attribute).data('easyPieChart').update($scope.thisPlayer[$scope.attribute]);
+  	}, 9000);
   });
   setTimeout(function(){
   	$('.chart').easyPieChart({ animate: 1000 });

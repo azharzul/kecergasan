@@ -26,10 +26,6 @@
 			<div>Stamina</div>
 			<div>{{thisPlayer['stamina']}}%</div>
 		</div>
-		<div class="col-xs-12" style="height:60px;"></div>
-		<div class="col-xs-12">
-			<button class="btn btn-primary btn-block">Refresh</button>
-		</div>
 	</div>
 </div>
 
@@ -53,15 +49,15 @@
 
 				Step 1.
 				<div class-"form-control">
-					<button class="btn btn-primary btn-block" id="linkBracelet">Link to Bracelet</button>
+					<button class="btn btn-primary btn-block" id="linkBracelet" ng-disabled="step1">Link to Bracelet</button>
 				</div>
 				Step 2.
 				<div class-"form-control">
-					<button class="btn btn-primary btn-block" id="startSession">Session Start</button>
+					<button class="btn btn-primary btn-block" id="startSession" ng-disabled="step2">Session Start</button>
 				</div>
 				Step 3.
 				<div class-"form-control">
-					<button class="btn btn-primary btn-block" id="stopSession">Session Stop</button>
+					<button class="btn btn-primary btn-block" id="stopSession" ng-disabled="step3">Session Stop</button>
 				</div>
 			</div>
 		</div>
