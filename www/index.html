@@ -1,87 +1,86 @@
 <!DOCTYPE html>
-<!--[if IE 9 ]><html class="ie ie9" lang="en" class="no-js"> <![endif]-->
-<!--[if !(IE)]><!-->
-<html lang="en" class="no-js">
-<!--<![endif]-->
-
-<head>
-	<title>Kecergasan</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name="description" content="KingAdmin Dashboard">
-	<meta name="author" content="The Develovers">
-
-	<!-- CSS -->
-	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/main.css" rel="stylesheet" type="text/css">
-
-	<!--[if lte IE 9]>
-		<link href="assets/css/main-ie.css" rel="stylesheet" type="text/css" />
-		<link href="assets/css/main-ie-part2.css" rel="stylesheet" type="text/css" />
-	<![endif]-->
-
-	<!-- Fav and touch icons -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/kingadmin-favicon144x144.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/kingadmin-favicon114x114.png">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/kingadmin-favicon72x72.png">
-	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/ico/kingadmin-favicon57x57.png">
-	<link rel="shortcut icon" href="assets/ico/favicon.png">
-
-</head>
-
-<body>
-	<div class="wrapper full-page-wrapper page-auth page-login text-center">
-		<div class="inner-page">
-			<div class="logo">
-				<a href="index.html"><img src="assets/img/logo.png" alt="" /></a>
-			</div>
-			
-
-			<div class="login-box center-block">
-				<form class="form-horizontal" role="form" action="main.html">
-					<p class="title">Use your username</p>
-					<div class="form-group">
-						<label for="username" class="control-label sr-only">Username</label>
-						<div class="col-sm-12">
-							<div class="input-group">
-								<input type="text" placeholder="username" id="username" class="form-control">
-								<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							</div>
-						</div>
-					</div>
-					<label for="password" class="control-label sr-only">Password</label>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<div class="input-group">
-								<input type="password" placeholder="password" id="password" class="form-control">
-								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-							</div>
-						</div>
-					</div>
-					<button class="btn btn-custom-primary btn-lg btn-block btn-auth" id="loginBtn"><i class="fa fa-arrow-circle-o-right"></i> Login</button>
-				</form>
-
-			</div>
-		</div>
-	</div>
-
-	<footer class="footer navbar-fixed-bottom">2015 Ayob Kelubi</footer>
-
-	<!-- Javascript -->
-	<script src="assets/js/jquery/jquery-2.1.0.min.js"></script>
-	<script src="assets/js/bootstrap/bootstrap.js"></script>
-	<script src="assets/js/plugins/modernizr/modernizr.js"></script>
-
-	<script type="text/javascript">
-	$("#loginBtn").click(function(){
-		localStorage.u = $("#username").val();
-		//alert(localStorage.u);
-	})
-		
-	</script>
-
-</body>
-
+<html>
+  <head>
+    <title>Bluetooth LE Example</title>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/pure-min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+  </head>
+  <body>
+    <div id="home" data-role="page">
+      <div data-role="content">
+      			<textarea id="logBox" class="logBox" rows="10" style="height:100px"></textarea>
+ 				<a href="#" class="pure-button gegar">Cuba Gegar</a>
+ 				<a href="#" class="pure-button initialize">Initialize</a>
+				<a href="#" class="pure-button enable">Enable</a>
+				<a href="#" class="pure-button disable">Disable</a>
+				<a href="#" class="pure-button startScan">Start Scan</a>
+				<a href="#" class="pure-button stopScan">Stop Scan</a>
+				<a href="#" class="pure-button retrieveConnected">Retrieve Connected</a>
+				<br />
+				<a href="#" class="pure-button isInitialized">Is Initialized</a>
+				<a href="#" class="pure-button isEnabled">Is Enabled</a>
+				<a href="#" class="pure-button isScanning">Is Scanning</a>
+				<h2>Devices</h2>
+				<ul class="devices">
+				</ul>
+      </div>
+    </div>
+    <script type="text/template" id="device">
+    	<li data-address="{0}">
+    		<h2>{1}</h2>
+				<a href="#" class="pure-button connect">Connect</a>
+				<a href="#" class="pure-button reconnect">Reconnect</a>
+				<a href="#" class="pure-button disconnect">Disconnect</a>
+				<a href="#" class="pure-button close">Close</a>
+				<a href="#" class="pure-button discover">Discover</a>
+				<a href="#" class="pure-button services">Services</a>
+				<a href="#" class="pure-button rssi">RSSI</a>
+				
+    		<br />
+				<a href="#" class="pure-button isConnected">Is Connected</a>
+				<a href="#" class="pure-button isDiscovered">Is Discovered</a>
+				<a href="#" class="pure-button requestConnectionPriority">Request Connection Priority</a>
+    		<h2 class="toggle">Services</h2>
+    		<ul class="services">
+    		</ul>
+    	</li>
+  	</script>
+  	<script type="text/template" id="service">
+  		<li data-serviceUuid="{0}">
+				<h2>{0}</h2>
+				<a href="#" class="pure-button characteristics">Characteristics</a>
+				<h2 class="toggle">Characteristics</h2>
+				<ul class="characteristics">
+				</ul>
+			</li>
+  	</script>
+  	<script type="text/template" id="characteristic">
+  		<li data-characteristicUuid="{0}">
+				<h2>{0}</h2>
+				<a href="#" class="pure-button read">Read</a>
+				<a href="#" class="pure-button subscribe">Subscribe</a>
+				<a href="#" class="pure-button unsubscribe">Unsubscribe</a>
+				<a href="#" class="pure-button write">Write</a>
+				<a href="#" class="pure-button descriptors">Descriptors</a>
+				<h2 class="toggle">Descriptors</h2>
+				<ul class="descriptors">
+				</ul>
+			</li>
+  	</script>
+  	<script type="text/template" id="descriptor">
+			<li data-descriptorUuid="{0}">
+				<h2>{0}</h2>
+				<a href="#" class="pure-button readDescriptor">Read Descriptor</a>
+				<a href="#" class="pure-button writeDescriptor">Write Descriptor</a>
+			</li>
+  	</script>
+  </body>
 </html>
-
