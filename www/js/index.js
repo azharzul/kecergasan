@@ -47,7 +47,7 @@ function onDeviceReady()
 
 app.initialize(function()
 {
-  $("#linkBracelet").on("vclick", gegar);
+  $("a.gegar").on("vclick", gegar);
 
   $("a.initialize").on("vclick", initialize);
 
@@ -262,7 +262,7 @@ app.initialize(function()
 
 function writeLogBox(msg)
 {
-  $("#logBox").append(msg);
+  $(".logBox").append(msg);
   $("#statusMsg").html(msg);
   var textarea = document.getElementById('logBox');
   textarea.scrollTop = textarea.scrollHeight;

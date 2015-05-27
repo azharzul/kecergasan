@@ -114,6 +114,7 @@ genericSTS.controller('AttributePageCtrl', ['$scope', '$http','filterFilter', fu
   	$scope.statusMsg = msg;
   	$scope.$apply();
   }
+
   $("#linkBracelet").click(function(){
   	setTimeout(function(){ $scope.updateStatus('',"Initializing"); }, 500);
   	setTimeout(function(){ $scope.updateStatus('ok',"Initialized"); }, 1500);
