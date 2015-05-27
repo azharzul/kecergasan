@@ -73,8 +73,16 @@ genericSTS.controller('PlayerListCtrl', ['$scope', '$http','filterFilter', funct
 
 genericSTS.controller('ProfilePageCtrl', ['$scope', '$http','filterFilter', function ($scope,$http,filterFilter) {
   //alert(localStorage.currentUser);
+
   players = JSON.parse(localStorage.players);
   $scope.thisPlayer = players[localStorage.currentUser]; 
+
+  $("#padam").click(function(){
+  	players.splice(localStorage.currentUser, 1);
+  	localStorage.players = JSON.stringify(players);
+  	window.location.replace('#playerList');
+
+  });
 }]);
 
 genericSTS.controller('AttributePageCtrl', ['$scope', '$http','filterFilter', function ($scope,$http,filterFilter) {
