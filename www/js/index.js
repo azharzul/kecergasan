@@ -262,9 +262,7 @@ app.initialize(function()
 
 function writeLogBox(msg)
 {
-  $(".logBox").append(msg);
-  var textarea = document.getElementById('logBox');
-  textarea.scrollTop = textarea.scrollHeight;
+  $("#statusMsg").html(msg);
 }
 
 function gegar()
@@ -279,7 +277,7 @@ function aXinitialize()
 {
   var paramsObj = {request:true};
 
-  writeLogBox("\n" + "Initialize : " + JSON.stringify(paramsObj));
+  writeLogBox("Initializing");
 
   bluetoothle.initialize(aXinitializeSuccess, aXinitializeError, paramsObj);
 
@@ -288,11 +286,11 @@ function aXinitialize()
 
 function aXinitializeSuccess(obj)
 {
-  writeLogBox("\n" + "Initialize Success : " + JSON.stringify(obj));
+  writeLogBox("Initialize Success");
 
   if (obj.status == "enabled")
   {
-    writeLogBox("\n" + "Enabled");
+    writeLogBox("Enabled");
     aXconnect('88:0F:10:1D:0E:57');
   }
   else
@@ -303,14 +301,14 @@ function aXinitializeSuccess(obj)
 
 function aXinitializeError(obj)
 {
-  writeLogBox("\n" + "Initialize Error : " + JSON.stringify(obj));
+  writeLogBox("\n" + "Initialize Error");
 }
 
 function aXconnect(address)
 {
   var paramsObj = {address:address};
 
-   writeLogBox("\n" + "Connect : " + JSON.stringify(paramsObj));
+   writeLogBox("\n" + "Connecting");
 
   bluetoothle.connect(aXconnectSuccess, aXconnectError, paramsObj);
 
@@ -319,7 +317,7 @@ function aXconnect(address)
 
 function aXconnectSuccess(obj)
 {
-  writeLogBox("\n" + "Connect Success : " + JSON.stringify(obj));
+  writeLogBox("\n" + "Connect Success");
 
   if (obj.status == "connected")
   {
@@ -338,14 +336,14 @@ function aXconnectSuccess(obj)
 
 function aXconnectError(obj)
 {
-  writeLogBox("\n" + "Connect Error : " + JSON.stringify(obj));
+  writeLogBox("\n" + "Connect Error");
 }
 
 function aXdiscover(address)
 {
   var paramsObj = {address:address};
 
-  writeLogBox("\n" + "Discover : " + JSON.stringify(paramsObj));
+  writeLogBox("\n" + "Discover");
 
   bluetoothle.discover(aXdiscoverSuccess, aXdiscoverError, paramsObj);
 
@@ -359,6 +357,7 @@ function aXdiscoverSuccess(obj)
   if (obj.status == "discovered")
   {
     writeLogBox("\n" + "Discovered");
+    /*
     writeLogBox("\n" + "Mula tulis");
     bytes = new Uint8Array(2);
     bytes[0] = 8;

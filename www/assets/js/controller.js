@@ -48,6 +48,9 @@ genericSTS.controller('PlayerListCtrl', ['$scope', '$http','filterFilter', funct
 		$scope.players[key] = {};
 		$scope.players[key]['name'] = $scope.newPlayerName.toUpperCase();
 		$scope.players[key]['position'] = $scope.newPlayerPosition.toUpperCase();
+		$scope.players[key]['age'] = $scope.newPlayerAge.toUpperCase();
+		$scope.players[key]['height'] = $scope.newPlayerHeight.toUpperCase();
+		$scope.players[key]['weight'] = $scope.newPlayerWeight.toUpperCase();
 		//console.log($scope.players);
 
 		localStorage.players = JSON.stringify($scope.players);
@@ -74,6 +77,32 @@ genericSTS.controller('AttributePageCtrl', ['$scope', '$http','filterFilter', fu
   //alert(localStorage.currentUser);
   players = JSON.parse(localStorage.players);
   $scope.thisPlayer = players[localStorage.currentUser]; 
+  $scope.attributeName = '';
+  $scope.statusType = 'fa-question-circle';
+  $scope.statusMsg = 'Waiting Command';
+
+  $scope.openModal = function(attribute)
+  {
+  	$scope.attributeName = attribute.toUpperCase();
+  	$('#myModal').modal('toggle');
+  }
+
+  $scope.updateStatus = function(type,msg)
+  {
+  	if(type == "ok")
+  		$scope.statusType = 'fa-check-circle';
+  	else if(type == "ng")
+  		$scope.statusType = 'fa-times-circle';
+  	else
+  		$scope.statusType = 'fa-question-circle';
+
+  	$scope.statusMsg = msg;
+  }
+
+  $("#linkBracelet").click(function(){
+  	aXinitialize()
+  });
+
   $('.chart').easyPieChart({
   	animate: 2000
   });
