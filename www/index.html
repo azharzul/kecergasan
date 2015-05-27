@@ -39,7 +39,7 @@
 			
 
 			<div class="login-box center-block">
-				<form class="form-horizontal" role="form" action="main.html">
+				<div class="form-horizontal" role="form">
 					<p class="title">Use your username</p>
 					<div class="form-group">
 						<label for="username" class="control-label sr-only">Username</label>
@@ -60,7 +60,7 @@
 						</div>
 					</div>
 					<button class="btn btn-custom-primary btn-lg btn-block btn-auth" id="loginBtn"><i class="fa fa-arrow-circle-o-right"></i> Login</button>
-				</form>
+				</div>
 
 			</div>
 		</div>
@@ -75,7 +75,17 @@
 
 	<script type="text/javascript">
 	$("#loginBtn").click(function(){
-		localStorage.u = $("#username").val();
+		if($("#username").val() == 'admin' && $("#password").val() == '123456')
+		{
+			localStorage.u = $("#username").val();
+			window.location.replace("main.html");
+		}
+		else
+		{
+			alert("Wrong username or password")
+		}
+		
+
 		//alert(localStorage.u);
 	})
 		
